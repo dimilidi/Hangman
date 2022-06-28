@@ -30,7 +30,7 @@ header {
     text-align: center;
     color: #154c79;
     width: 90%;
-    margin: 65px auto 0;
+    margin: 60px auto 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,7 +45,7 @@ h1 {
 
 /* Select category drop-down with options */
 .category {
-    padding: 10px;
+
     visibility: hidden;
 }
 
@@ -54,7 +54,7 @@ h1 {
     font-weight: bold;
     text-align: center;
     color:#1e81b0;
-    margin: 30px 0px 20px;
+    margin: 25px 0px 20px;
     padding: 10px;
     outline: none;
     border: none; 
@@ -447,10 +447,6 @@ footer {
 
     header p {
         display: none;
-    }
-
-    .category, #select_category {
-        font-size: 1.3rem;
     }
 
     main {
