@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="assets/css/hangman.css">
+    <title>Hangman</title>
+<body>
+    <!--------------------------------------   WRAPPER    ------------------------------------------->
+    <div class="container">
+        <!-------------------------------------  HEADER  ------------------------------------->
+        <header class="header">
+            <!-- Game name -->
+            <h1>Hangman Game</h1>
+            <!-- Word Categories -->
+            <div class="category">
+                 <!-- Select category - drop-down options -->
+                <select id="select_category" >
+                    <option  id = "first_option" value= "" selected data-default >categories</option>
+                    <option  value="people">people</option>
+                    <option  value="movies">movies</option>
+                    <option  value="countries">countries</option>
+                    <option  value="random">random</option>
+                </select> 
+            </div>
+        </header>
+        <!------------------------------------------------------------------------------------>
+        <!--------------------------------------  MAIN  -------------------------------------->
+        <main>
+            <!-- Start Page (arrow) -->
+            <div class="arrow-container">
+                <div class="arrow"></div>
+                <div class="h2">
+                     <h2>Select a category to start</h2>
+                </div> 
+            </div>
+            
+            <!-- Player's Live Scores -->
+            <div class="lives">
+                <p class="text-center">Remaining lives: 
+                    <span id="guesses">8</span>
+                </p>
+            </div>
+
+            <!-- Underscores for the Word -->
+            <div class="underscore"></div>
+
+            <!-- Hangman Skeleton of the drawing -->
+            <div class="row">
+                <div class="hangman-draw">
+                  <div class="the-draw">
+                    <div class="the-stand"></div>
+                    <div class="the-hang"></div>
+                    <div class="the-rope"></div>
+                    <div class="the-man">
+                      <div class="head"></div>
+                      <div class="body"></div>
+                      <div class="hands"></div>
+                      <div class="legs"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            <!-- Wrong Guesses container-->
+            <div class="wrong-guess">
+                <p>Wrong Guess</p>
+            </div>
+
+            <!-- Refresh button -->
+            <button class="btn_refresh" onClick="location.reload()">New Game</button>
+        </main>
+        <!------------------------------------------------------------------------------------>
+    </div>
+    <!----------------------------------------------------------------------------------------------->
+
+    <!--------------------------------------  FOOTER  ------------------------------------------>
+    <footer>
+        <p>Copyright &copy; 2022 LiD</p>
+    </footer>
+    <!------------------------------------------------------------------------------------------->
+
+
+    <!-- Audio -->
+    <audio id="success" src="assets/audio/success.mp3" preload="auto"></audio>
+    <audio id="game_over" src="assets/audio/game-over.mp3" preload="auto"></audio>
+    <audio id="alert" src="assets/audio/alert.mp3" preload="auto"></audio>
+    <audio id="wrong_answer" src="assets/audio/wrong-answer.mp3" preload="auto"></audio>
+
+    <!-- Sweetalert Link -->
+    <script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- Javascript Link -->
+    <script src="assets/js/hangman.js"></script> 
+</body>
+</html>

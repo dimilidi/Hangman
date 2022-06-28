@@ -1,0 +1,473 @@
+/* CSS Reset */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+/* Body and Wrapper */
+
+body {
+    background-color: rgb(223, 220, 220);
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+}
+
+
+
+/********************************** HEADER *********************************/
+
+/* Layout */
+header {
+    font-size: 2rem;
+    text-align: center;
+    color: #154c79;
+    width: 90%;
+    margin: 65px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* Title */
+h1 {
+    text-transform: uppercase;
+}
+
+
+/* Select category drop-down with options */
+.category {
+    padding: 10px;
+    visibility: hidden;
+}
+
+#select_category {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color:#1e81b0;
+    margin: 30px 0px 20px;
+    padding: 10px;
+    outline: none;
+    border: none; 
+    outline: none;
+    background-color: transparent;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#select_category:hover {
+    color: #154c79;
+}
+
+option {
+    background-color: rgb(223, 220, 220);
+}
+/*****************************************************************************/
+
+/************************************* MAIN ************************************/
+
+/* Layout */
+main {
+    width: 60%;
+    height: 650px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background: white;
+    box-shadow:  0px 0px 20px 2px rgb(156, 156, 156);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+/* Arrow Styling */
+.arrow-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background-color: #154c79d7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+div.arrow {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	transform: rotate(-45deg);
+    cursor: pointer;
+}	
+
+.arrow:before {
+		content: '';
+		width: 100%;
+		height: 100%;
+		border-width: 8px 8px 0 0;
+		border-style: solid;
+		border-color: #fafafa;
+		transition: .2s ease;
+		display: block;
+		transform-origin: 100% 0;
+}
+
+.arrow:after {
+		content: '';
+		float: left;
+		position: relative;
+		top: -100%;
+		width: 100%;
+		height: 100%;
+		border-width: 0 8px 0 0;
+		border-style: solid;
+		border-color: #fafafa;
+		transform-origin: 100% 0;
+		transition:.2s ease;
+	}
+	
+.arrow:hover::after {
+		transform: rotate(45deg);
+		border-color: orange;
+		height: 120%;
+}
+.arrow:hover::before {
+		border-color: orange;
+		transform: scale(.8);	
+}
+	
+
+/* Start Page Text */
+.h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-top: 150px;
+    padding: 10px;
+    color: #fafafa;  
+    opacity: .8;
+    animation-name: fadeInOut;
+    animation-delay: .1s;
+    animation-duration: 5s;
+    visibility: hidden;
+}
+
+h2 {
+    font-weight: 400;
+}
+ 
+
+/* Live Scores */
+.lives {
+    font-size: 1.5rem;
+    color: rgb(101, 99, 99);
+    text-align: center;
+    margin: 12px auto;
+    width: 60%;
+    display: none;
+}
+
+.lives span {
+    color: red;
+}
+
+
+/* Underscores for the letters to be guessed */
+.underscore {
+    width: 90%;
+    color:#1e81b0;
+    font-size: 3.2rem;
+    text-align: center; 
+}
+
+/* Wrong guesses container  */
+.wrong-guess {
+    font-size: 1.8rem;
+    color:#1e81b0;
+    text-align: center;
+    width: 60%;
+    display: none;
+}
+
+
+/******* The Hangman Drawing *******/
+.hangman-draw {
+    flex: 1;
+    padding: 6px;
+    display: none;
+}
+
+/* Canvas */
+.hangman-draw .the-draw {
+    width: 60px;
+    height: 210px;
+    border-bottom: 4px solid #154c79;
+    position: relative;
+    margin: auto;
+    left: -60px;
+    display: none;
+}
+
+/* Stand */
+.hangman-draw .the-stand {
+    position: absolute;
+    width: 4px;
+    background-color: #154c79;
+    height: 100%;
+    left: 50%;
+    margin-left: -2px;
+    display: none;
+}
+
+/* Hang */
+.hangman-draw .the-hang {
+    display: none;
+}
+
+.hangman-draw .the-hang:before {
+    content: '';
+    position: absolute;
+    height: 4px;
+    background-color: #154c79;;
+    width: 100px;
+    left: 30px;
+    top: 15px;
+}
+
+.hangman-draw .the-hang:after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 30px;
+    background-color: #154c79;
+    left: 130px;
+    top: 15px;
+}
+
+/* Rope */
+.hangman-draw .the-rope {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+    left: 100px;
+    top: 45px;
+    border: 4px dashed orange;
+    display: none;
+}
+
+/* Head */
+.hangman-draw .the-man .head {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 4px solid #154c79;
+    position: absolute;
+    left: 110px;
+    top: 55px;
+    display: none;
+}
+
+/* Body */
+.hangman-draw .the-man .body {
+    position: absolute;
+    background-color: #154c79;
+    width: 4px;
+    height: 70px;
+    top: 95px;
+    left: 130px;
+    display: none;
+}
+
+/* Arms */
+.hangman-draw .the-man .hands {
+    display: none;
+}
+
+.hangman-draw .the-man .hands:before {
+    left: 90px;
+    transform: rotate(30deg);
+}
+
+.hangman-draw .the-man .hands:after {
+    left: 130px;
+    transform: rotate(-30deg);
+}
+
+.hangman-draw .the-man .hands:before,
+.hangman-draw .the-man .hands:after {
+    content: '';
+    width: 45px;
+    position: absolute;
+    height: 4px;
+    background-color: #154c79;
+    top: 105px;
+}
+
+/* Legs */
+.hangman-draw .the-man .legs {
+    display: none;
+}
+
+.hangman-draw .the-man .legs:before {
+    left: 85px;
+    transform: rotate(-30deg);
+}
+
+.hangman-draw .the-man .legs:after {
+    left: 130px;
+    transform: rotate(30deg);
+}
+
+.hangman-draw .the-man .legs:before,
+.hangman-draw .the-man .legs:after {
+    content: '';
+    width: 50px;
+    position: absolute;
+    height: 4px;
+    background-color: #154c79;
+    top: 175px;
+}
+
+/* Wrong class to be created in JS  --> drawing the man by wrong answer */
+.hangman-draw.wrong-1 .the-draw {
+    display: block;
+}
+
+.hangman-draw.wrong-2 .the-stand {
+    display: block;
+}
+
+.hangman-draw.wrong-3 .the-hang {
+    display: block;
+}
+
+.hangman-draw.wrong-4 .the-rope {
+    display: block;
+}
+
+.hangman-draw.wrong-5 .head {
+    display: block;
+}
+
+.hangman-draw.wrong-6 .body {
+    display: block;
+}
+
+.hangman-draw.wrong-7 .hands {
+    display: block;
+}
+
+.hangman-draw.wrong-8 .legs {
+    display: block;
+}
+/*********  **********/
+
+/* Reload Button --> New Game */
+.btn_refresh {
+    margin: 0 auto;
+    padding: 13px 30px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 20px;   
+    background-color: #1e81b0;
+    color: white;
+    border: 2px dotted #1e81b0;
+    transition:  background-color .5s;
+    display: none;
+}
+
+.btn_refresh:hover {
+    cursor: pointer;
+    color: #154c79;
+    background-color: white;
+}
+
+/* Dynamically generated classes in JS to display/ hide elements */
+.display {
+    display: block;
+}
+
+.no-display {
+    display: none;
+
+}
+
+.be-visible {
+    visibility: visible;
+}
+
+
+/* Animation for the start page arrow heading */
+@keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+   
+    100% {
+      opacity: 0.8;
+    }
+}
+
+/*****************************************************************************/
+
+/********************************** FOOTER *********************************/
+footer {
+    height: 50px;
+    width: 100%;
+    color: #154c79a2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*****************************************************************************/
+
+
+
+/********************************** MEDIA QUERIES *********************************/
+
+@media only screen and (max-width: 900px) {
+    .container {
+        padding: 20px 10px;
+    }
+
+    header {
+        height: 190px;
+        font-size: 1.7rem;
+    }
+
+    header p {
+        display: none;
+    }
+
+    .category, #select_category {
+        font-size: 1.3rem;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    .h2 {
+        font-size: 1.2rem;
+    }
+
+    .underscore {
+        font-size: 2rem;
+    }
+
+    .lives, .wrongGuess {
+        font-size: 1.2rem;
+    }
+}
+
+/*****************************************************************************/
