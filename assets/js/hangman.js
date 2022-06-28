@@ -132,7 +132,7 @@ docSelectCategory.addEventListener('change',print);
 
 
 //Get users guess
-document.addEventListener('keydown', (event) => {
+document.addEventListener('keypress', (event) => {
 
     //once the game has been started the player is not allowed to change the category/ word
     docSelectCategory.disabled = true;
