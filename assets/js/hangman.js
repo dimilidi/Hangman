@@ -229,71 +229,62 @@ document.addEventListener('keypress', (event) => {
 
 //Get users guess Mobile / Virtual Keyboard
 document.addEventListener('click', (event) => {
+  // Set The Choose Status
+  let theStatus = false;
 
-    // Set The Choose Status
-    let theStatus = false;
+  if (event.target.className === 'letter-box') {
+  
+      event.target.classList.add("clicked");
+  
+    // Get Clicked Letter
+      let theClickedLetter = event.target.innerHTML.toLowerCase();
 
-    if (event.target.className === 'letter-box') {
-    
-        event.target.classList.add("clicked");
-    
-      // Get Clicked Letter
-        let theClickedLetter = event.target.innerHTML.toLowerCase();
+    //once the game has been started the player is not allowed to change the category/ word
+      docSelectCategory.disabled = true;
 
-      //once the game has been started the player is not allowed to change the category/ word
-       docSelectCategory.disabled = true;
+      if ( wrongWord.length === 8){
+          document.getElementById("game_over").play();
+          alert('Game over!');
+          // disable keyboard input
+          document.onkeydown = () => false
+      
 
-    // alert player to guess a letter only once
-    if (JSON.stringify(wrongWord).includes(theClickedLetter) || JSON.stringify(rightWord).includes(theClickedLetter)){
-        // sound alert
-        document.getElementById("alert").play();
-        // pop-up message alert
-        swal("You've already used this letter!","Choose another letter", "warning");
+      //if the guess is wrong
+      } else if (!(chosenWord.includes(theClickedLetter))) {
+          // player is loosing live points
+          lives--;
+          docGuesses.innerHTML = lives;
+          // put wrong words into wrongWord and show the wrong letters to the player
+          wrongWord.push(theClickedLetter);
+          docWrongGuess.innerHTML = wrongWord.join(', ');
+          // add class wrong on the draw element and draw the hangman
+          theDraw.classList.add(`wrong-${wrongWord.length}`);
+          // play a sound alerting the wrong answer
+          document.getElementById("wrong_answer").play();
+          
+      //if the guess is right
+      }  else {
+          // put right letter into rightWord 
+          rightWord.push(theClickedLetter);
+          //replace underscore with the right letter
+          let letter = chosenWord.split('');
+          letter.forEach((letter, index) => {
+              if (letter == theClickedLetter) {
+                  underScore[index] = letter;
+                  docUnderScore[0].innerHTML = underScore.join(' '); 
+              }
+          });
 
-    // game over by 8 wrong letters 
-    } else  if ( wrongWord.length === 8){
-        document.getElementById("game_over").play();
-        swal('Game over!', 'Start a new game', 'error');
-        // disable keyboard input
-        document.onkeydown = () => false
-    
-
-    //if the guess is wrong
-    } else if (!(chosenWord.includes(theClickedLetter))) {
-        // player is loosing live points
-        lives--;
-        docGuesses.innerHTML = lives;
-        // put wrong words into wrongWord and show the wrong letters to the player
-        wrongWord.push(theClickedLetter);
-        docWrongGuess.innerHTML = wrongWord.join(', ');
-        // add class wrong on the draw element and draw the hangman
-        theDraw.classList.add(`wrong-${wrongWord.length}`);
-        // play a sound alerting the wrong answer
-        document.getElementById("wrong_answer").play();
-         
-    //if the guess is right
-    }  else {
-        // put right letter into rightWord 
-        rightWord.push(theClickedLetter);
-        //replace underscore with the right letter
-        let letter = chosenWord.split('');
-        letter.forEach((letter, index) => {
-            if (letter == theClickedLetter) {
-                underScore[index] = letter;
-                docUnderScore[0].innerHTML = underScore.join(' '); 
-            }
-        });
-
-        // check if the guessed word matches the chosen word
-        if (underScore.join('').replace(/&nbsp/g, ' ') == chosenWord) {
-            // play success sound
-            document.getElementById("success").play();
-            // congratulate the player
-            swal("Good job!", "The word was " + chosenWord.toUpperCase(), "success");
-            // disable keyboard input
-            document.onkeydown = () => false;
-        }  
-    }
+          // check if the guessed word matches the chosen word
+          if (underScore.join('').replace(/&nbsp/g, ' ') == chosenWord) {
+              // play success sound
+              document.getElementById("success").play();
+              // congratulate the player
+              alert("Good job! The word was " + chosenWord.toUpperCase());
+              // disable keyboard input
+              document.onkeydown = () => false;
+          }  
+      }
   }
 });
 
