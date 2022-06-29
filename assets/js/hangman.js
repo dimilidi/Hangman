@@ -227,6 +227,12 @@ document.addEventListener('keypress', (event) => {
     }
 });
 
+mWebView.getSettings().setJavaScriptEnabled(true);
+mWebView.setWebChromeClient(new WebChromeClient());
+
+
+
+
 //Get users guess Mobile / Virtual Keyboard
 document.addEventListener('click', (event) => {
   // Set The Choose Status
@@ -257,8 +263,6 @@ document.addEventListener('click', (event) => {
           // put wrong words into wrongWord and show the wrong letters to the player
           wrongWord.push(theClickedLetter);
           docWrongGuess.innerHTML = wrongWord.join(', ');
-          // add class wrong on the draw element and draw the hangman
-          theDraw.classList.add(`wrong-${wrongWord.length}`);
           // play a sound alerting the wrong answer
           document.getElementById("wrong_answer").play();
           
