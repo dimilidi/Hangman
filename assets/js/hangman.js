@@ -288,3 +288,4 @@ document.addEventListener('click', (event) => {
 
 
 //======================================================================
+window.Swal = require('sweetalert2');
