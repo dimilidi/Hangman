@@ -7,7 +7,7 @@
 const letters = "abcdefghijklmnopqrstuvwxyz";
 
 // Get array from Letters
-let lettersArray = Array.from(letters);
+let lettersArray = letters.split('');
 
 // Create an object of categories with words
 const words = {
@@ -31,7 +31,7 @@ const wrongWord = [];
 // Empty underscores for every letter of the chosen word
 const underScore = [];
 
-//Lives at the start
+//Lives initially
 let lives = 8;
 
 //======================================================================
@@ -49,8 +49,6 @@ const docRightGuess = document.getElementsByClassName('rightGuess');
 const docWrongGuess = document.querySelector('.wrong-guess');
 const docGuesses = document.getElementById('guesses');
 const theDraw = document.querySelector(".hangman-draw");
-// const button = document.querySelector('.btn_refresh');
-// const livesContainer = document.querySelector('div.lives');
 const playField = document.querySelector('.main')
 
 
@@ -63,27 +61,6 @@ arrowContainer.onclick = () => {
     categoryContainer.classList.add('be-visible');
     heading2.classList.add('be-visible');
 }
-
-// Generate letters
-lettersArray.forEach(letter => {
-
-  // create span
-  let span = document.createElement("span");
-
-  // create letter text node
-  let theLetter = document.createTextNode(letter);
-
-  // append the letter to span
-  span.appendChild(theLetter);
-
-  // add class on span
-  span.className = 'letter-box';
-
-  // append span to the letters container
-  lettersContainer.appendChild(span);
-
-});
-
 
 //Create underscores or empty spaces based on length of word
 const generateUnderscore = () => {
@@ -157,6 +134,8 @@ let print = () => {
 docSelectCategory.addEventListener('change',print);
 
 
+// ============================= Event Listener for COMPUTER ============================= 
+
 //Get users guess on a Computer with Keyboard
 document.addEventListener('keypress', (event) => {
 
@@ -220,6 +199,27 @@ document.addEventListener('keypress', (event) => {
 });
 
 
+// ============================= Event Listener for MOBILE DEVICES ============================= 
+
+// Generate letters for the virtual keyboard of mobile devices
+lettersArray.forEach(letter => {
+
+  // create span
+  let span = document.createElement("span");
+
+  // create letter text node
+  let theLetter = document.createTextNode(letter);
+
+  // append the letter to span
+  span.appendChild(theLetter);
+
+  // add class on span
+  span.className = 'letter-box';
+
+  // append span to the letters container
+  lettersContainer.appendChild(span);
+
+});
 
 //Get users guess on Mobile Device with Virtual Keyboard
 document.addEventListener('click', (event) => {
