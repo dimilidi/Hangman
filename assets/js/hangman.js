@@ -6,40 +6,15 @@
 // Letters
 const letters = "abcdefghijklmnopqrstuvwxyz";
 
-// Get Array From Letters
+// Get array from Letters
 let lettersArray = Array.from(letters);
-
-// Select Letters Container
-const lettersContainer = document.querySelector(".letters");
-
-// Generate Letters
-lettersArray.forEach(letter => {
-
-  // Create Span
-  let span = document.createElement("span");
-
-  // Create Letter Text Node
-  let theLetter = document.createTextNode(letter);
-
-  // Append The Letter To Span
-  span.appendChild(theLetter);
-
-  // Add Class On Span
-  span.className = 'letter-box';
-
-  // Append Span To The Letters Container
-  lettersContainer.appendChild(span);
-
-});
-
-
 
 // Create an object of categories with words
 const words = {
-    movies: ["into the wild", "the godfather", "the matrix", "home alone"],
-    people: ["albert einstein", "hitchcock", "michael jackson", "cleopatra", "mahatma ghandi"],
-    countries: ["bulgaria", "germany", "yemen", "egypt", "malta", "qatar"]
-  };
+  movies: ["into the wild", "the godfather", "the matrix", "home alone"],
+  people: ["albert einstein", "hitchcock", "michael jackson", "cleopatra", "mahatma ghandi"],
+  countries: ["bulgaria", "germany", "yemen", "egypt", "malta", "qatar"]
+};
 
 //Define the chosen word
 let chosenWord = "" ;
@@ -68,6 +43,7 @@ const categoryContainer = document.querySelector('div.category');
 const docSelectCategory = document.querySelector("#select_category");
 const docCategoryOption = document.querySelectorAll("option");
 const firstOption = document.getElementById('first_option');
+const lettersContainer = document.querySelector(".letters");
 const docUnderScore = document.getElementsByClassName('underscore');
 const docRightGuess = document.getElementsByClassName('rightGuess');
 const docWrongGuess = document.querySelector('.wrong-guess');
@@ -87,6 +63,27 @@ arrowContainer.onclick = () => {
     categoryContainer.classList.add('be-visible');
     heading2.classList.add('be-visible');
 }
+
+// Generate letters
+lettersArray.forEach(letter => {
+
+  // create span
+  let span = document.createElement("span");
+
+  // create letter text node
+  let theLetter = document.createTextNode(letter);
+
+  // append the letter to span
+  span.appendChild(theLetter);
+
+  // add class on span
+  span.className = 'letter-box';
+
+  // append span to the letters container
+  lettersContainer.appendChild(span);
+
+});
+
 
 //Create underscores or empty spaces based on length of word
 const generateUnderscore = () => {
@@ -160,7 +157,7 @@ let print = () => {
 docSelectCategory.addEventListener('change',print);
 
 
-//Get users guess on Computer/ Keyboard
+//Get users guess on a Computer with Keyboard
 document.addEventListener('keypress', (event) => {
 
     //once the game has been started the player is not allowed to change the category/ word
@@ -222,13 +219,13 @@ document.addEventListener('keypress', (event) => {
     }
 });
 
-mWebView.getSettings().setJavaScriptEnabled(true);
-mWebView.setWebChromeClient(new WebChromeClient());
+// mWebView.getSettings().setJavaScriptEnabled(true);
+// mWebView.setWebChromeClient(new WebChromeClient());
 
 
 
 
-//Get users guess Mobile / Virtual Keyboard
+//Get users guess on Mobile Device with Virtual Keyboard
 document.addEventListener('click', (event) => {
   // Set The Choose Status
   let theStatus = false;
