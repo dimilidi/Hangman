@@ -219,10 +219,6 @@ document.addEventListener('keypress', (event) => {
     }
 });
 
-// mWebView.getSettings().setJavaScriptEnabled(true);
-// mWebView.setWebChromeClient(new WebChromeClient());
-
-
 
 
 //Get users guess on Mobile Device with Virtual Keyboard
@@ -242,9 +238,9 @@ document.addEventListener('click', (event) => {
 
       if ( wrongWord.length === 8){
           document.getElementById("game_over").play();
-          swal('Game over!', 'Start a new game', 'error');
+          alert('Game over!');
           // disable keyboard input
-          document.onkeydown = () => false
+         lettersContainer.classList.add('finished');
       
 
       //if the guess is wrong
@@ -278,7 +274,7 @@ document.addEventListener('click', (event) => {
               // congratulate the player
               alert("Good job! The word was " + chosenWord.toUpperCase());
               // disable keyboard input
-              document.onkeydown = () => false;
+              lettersContainer.classList.add('finished');
           }  
       }
   }
