@@ -158,7 +158,7 @@ document.addEventListener('keypress', (event) => {
     // game over by 8 wrong letters 
     } else  if ( wrongWord.length === 8){
         document.getElementById("game_over").play();
-        swal('Game over!', 'Start a new game', 'error');
+        swal("Game over!", "Start a new game", "error");
         // disable keyboard input
         document.onkeydown = () => false
     
