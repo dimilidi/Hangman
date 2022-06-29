@@ -133,7 +133,7 @@ let print = () => {
             // docWrongGuess.classList.add('display');
             // button.classList.add('display');
             // lettersContainer.classList.add('display'); 
-            // playField.classList.add('display'); 
+            playField.classList.add('display'); 
         }
 
         // check which category has been selected and generate underscores for a random word of it 
