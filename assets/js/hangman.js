@@ -91,6 +91,7 @@ let print = () => {
     //remove underscores before generating new ones
     removeUnderScore();
 
+
     // get a category and the words in every category
     for (let i = 0; i < allCategories.length; i++) {
         //get a category
@@ -126,6 +127,8 @@ let print = () => {
         let chosenWordInRandomCategory = wordsInRandomCategory[Math.floor(Math.random() * wordsInRandomCategory.length)];
         chosenWord = chosenWordInRandomCategory;  
         generateUnderscore(); 
+        //unlock the keyboard
+        document.onkeydown = () => true;
     }  
 }
 
