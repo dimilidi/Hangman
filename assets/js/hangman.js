@@ -250,7 +250,7 @@ document.addEventListener('click', (event) => {
 
       if ( wrongWord.length === 8){
           document.getElementById("game_over").play();
-          alert('Game over!');
+          swal('Game over!', 'Start a new game', 'error');
           // disable keyboard input
           document.onkeydown = () => false
       
