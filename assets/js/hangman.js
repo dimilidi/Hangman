@@ -3,6 +3,37 @@
 //                          Global Variables
 //======================================================================
 
+// Letters
+const letters = "abcdefghijklmnopqrstuvwxyz";
+
+// Get Array From Letters
+let lettersArray = Array.from(letters);
+
+// Select Letters Container
+const lettersContainer = document.querySelector(".letters");
+
+// Generate Letters
+lettersArray.forEach(letter => {
+
+  // Create Span
+  let span = document.createElement("span");
+
+  // Create Letter Text Node
+  let theLetter = document.createTextNode(letter);
+
+  // Append The Letter To Span
+  span.appendChild(theLetter);
+
+  // Add Class On Span
+  span.className = 'letter-box';
+
+  // Append Span To The Letters Container
+  lettersContainer.appendChild(span);
+
+});
+
+
+
 // Create an object of categories with words
 const words = {
     movies: ["into the wild", "the godfather", "the matrix", "home alone"],
@@ -44,6 +75,7 @@ const docGuesses = document.getElementById('guesses');
 const theDraw = document.querySelector(".hangman-draw");
 const button = document.querySelector('.btn_refresh');
 const livesContainer = document.querySelector('div.lives');
+const playField = document.querySelector('.main')
 
 
 //======================================================================
@@ -96,10 +128,12 @@ let print = () => {
         // check if a category has been selected, hide the start page and desplay the game field
         if (docSelectCategory.value == category || docSelectCategory.value == 'random') {
             arrowContainer.classList.add('no-display');
-            theDraw.classList.add('display');  
-            livesContainer.classList.add('display');
-            docWrongGuess.classList.add('display');
-            button.classList.add('display');
+            // theDraw.classList.add('display');  
+            // livesContainer.classList.add('display');
+            // docWrongGuess.classList.add('display');
+            // button.classList.add('display');
+            // lettersContainer.classList.add('display'); 
+            // playField.classList.add('display'); 
         }
 
         // check which category has been selected and generate underscores for a random word of it 
@@ -131,7 +165,7 @@ let print = () => {
 docSelectCategory.addEventListener('change',print);
 
 
-//Get users guess
+//Get users guess on Computer/ Keyboard
 document.addEventListener('keypress', (event) => {
 
     //once the game has been started the player is not allowed to change the category/ word
@@ -192,6 +226,78 @@ document.addEventListener('keypress', (event) => {
         }  
     }
 });
+
+//Get users guess Mobile / Virtual Keyboard
+document.addEventListener('click', (event) => {
+
+    // Set The Choose Status
+    let theStatus = false;
+
+    if (event.target.className === 'letter-box') {
+    
+        event.target.classList.add("clicked");
+    
+      // Get Clicked Letter
+        let theClickedLetter = event.target.innerHTML.toLowerCase();
+
+      //once the game has been started the player is not allowed to change the category/ word
+       docSelectCategory.disabled = true;
+
+    // alert player to guess a letter only once
+    if (JSON.stringify(wrongWord).includes(theClickedLetter) || JSON.stringify(rightWord).includes(theClickedLetter)){
+        // sound alert
+        document.getElementById("alert").play();
+        // pop-up message alert
+        swal("You've already used this letter!","Choose another letter", "warning");
+
+    // game over by 8 wrong letters 
+    } else  if ( wrongWord.length === 8){
+        document.getElementById("game_over").play();
+        swal('Game over!', 'Start a new game', 'error');
+        // disable keyboard input
+        document.onkeydown = () => false
+    
+
+    //if the guess is wrong
+    } else if (!(chosenWord.includes(theClickedLetter))) {
+        // player is loosing live points
+        lives--;
+        docGuesses.innerHTML = lives;
+        // put wrong words into wrongWord and show the wrong letters to the player
+        wrongWord.push(theClickedLetter);
+        docWrongGuess.innerHTML = wrongWord.join(', ');
+        // add class wrong on the draw element and draw the hangman
+        theDraw.classList.add(`wrong-${wrongWord.length}`);
+        // play a sound alerting the wrong answer
+        document.getElementById("wrong_answer").play();
+         
+    //if the guess is right
+    }  else {
+        // put right letter into rightWord 
+        rightWord.push(theClickedLetter);
+        //replace underscore with the right letter
+        let letter = chosenWord.split('');
+        letter.forEach((letter, index) => {
+            if (letter == theClickedLetter) {
+                underScore[index] = letter;
+                docUnderScore[0].innerHTML = underScore.join(' '); 
+            }
+        });
+
+        // check if the guessed word matches the chosen word
+        if (underScore.join('').replace(/&nbsp/g, ' ') == chosenWord) {
+            // play success sound
+            document.getElementById("success").play();
+            // congratulate the player
+            swal("Good job!", "The word was " + chosenWord.toUpperCase(), "success");
+            // disable keyboard input
+            document.onkeydown = () => false;
+        }  
+    }
+  }
+});
+
+
 
 
 

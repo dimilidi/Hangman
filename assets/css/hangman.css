@@ -82,12 +82,18 @@ main {
     margin: 0 auto;
     border-radius: 20px;
     background: white;
-    box-shadow:  0px 0px 20px 2px rgb(156, 156, 156);
+    box-shadow:  0px 0px 20px 2px rgb(156, 156, 156);  
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    
+    /* display: none; */
 }
 
 /* Arrow Styling */
@@ -173,7 +179,7 @@ h2 {
     text-align: center;
     margin: 12px auto;
     width: 60%;
-    display: none;
+    /* display: none; */
 }
 
 .lives span {
@@ -195,15 +201,16 @@ h2 {
     color:#1e81b0;
     text-align: center;
     width: 60%;
-    display: none;
+    /* display: none; */
 }
 
 
 /******* The Hangman Drawing *******/
+
 .hangman-draw {
     flex: 1;
     padding: 6px;
-    display: none;
+    /* display: none; */
 }
 
 /* Canvas */
@@ -372,6 +379,42 @@ h2 {
 }
 /*********  **********/
 
+/* .row {
+    display: flex;
+} */
+.letters {
+    /* flex: 1; */
+    width: 80%;
+    padding: 15px;
+    text-align: center;
+    display: none;
+  }
+  .letters.finished {
+    pointer-events: none;
+  }
+  .letters .letter-box {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    background-color: #1e81b0;
+    color: #FFF;
+    font-size: 16px;
+    margin-right: 10px; 
+    margin-bottom: 10px;
+    line-height: 35px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+   
+  }
+  .letters .letter-box.clicked {
+    background-color: #222;
+    opacity: .2;
+    pointer-events: none;
+  }
+
+
 /* Reload Button --> New Game */
 .btn_refresh {
     margin: 0 auto;
@@ -383,7 +426,7 @@ h2 {
     color: white;
     border: 2px dotted #1e81b0;
     transition:  background-color .5s;
-    display: none;
+    /* display: none; */
 }
 
 .btn_refresh:hover {
@@ -417,6 +460,11 @@ h2 {
       opacity: 0.8;
     }
 }
+
+
+
+
+
 
 /*****************************************************************************/
 
@@ -463,6 +511,12 @@ footer {
 
     .lives, .wrongGuess {
         font-size: 1.2rem;
+    }
+    .row {
+        display: none;
+    }
+    .letters {
+        display: block;
     }
 }
 
