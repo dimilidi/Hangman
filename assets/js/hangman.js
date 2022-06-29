@@ -1,4 +1,5 @@
-
+// window.Swal = require('sweetalert2');
+`const Swal = require('sweetalert2')`
 //======================================================================
 //                          Global Variables
 //======================================================================
@@ -288,4 +289,3 @@ document.addEventListener('click', (event) => {
 
 
 //======================================================================
-window.Swal = require('sweetalert2');
