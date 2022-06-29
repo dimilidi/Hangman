@@ -73,8 +73,8 @@ const docRightGuess = document.getElementsByClassName('rightGuess');
 const docWrongGuess = document.querySelector('.wrong-guess');
 const docGuesses = document.getElementById('guesses');
 const theDraw = document.querySelector(".hangman-draw");
-const button = document.querySelector('.btn_refresh');
-const livesContainer = document.querySelector('div.lives');
+// const button = document.querySelector('.btn_refresh');
+// const livesContainer = document.querySelector('div.lives');
 const playField = document.querySelector('.main')
 
 
@@ -128,11 +128,6 @@ let print = () => {
         // check if a category has been selected, hide the start page and desplay the game field
         if (docSelectCategory.value == category || docSelectCategory.value == 'random') {
             arrowContainer.classList.add('no-display');
-            // theDraw.classList.add('display');  
-            // livesContainer.classList.add('display');
-            // docWrongGuess.classList.add('display');
-            // button.classList.add('display');
-            // lettersContainer.classList.add('display'); 
             playField.classList.add('display'); 
         }
 

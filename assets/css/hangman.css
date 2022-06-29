@@ -83,11 +83,6 @@ main {
     border-radius: 20px;
     background: white;
     box-shadow:  0px 0px 20px 2px rgb(156, 156, 156);
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around; */
-    
 }
 
 .main {
@@ -206,7 +201,6 @@ h2 {
     color:#1e81b0;
     text-align: center;
     width: 60%;
-    /* display: none; */
 }
 
 
@@ -215,7 +209,6 @@ h2 {
 .hangman-draw {
     flex: 1;
     padding: 6px;
-    /* display: none; */
 }
 
 /* Canvas */
@@ -384,20 +377,19 @@ h2 {
 }
 /*********  **********/
 
-/* .row {
-    display: flex;
-} */
+
 .letters {
-    /* flex: 1; */
     width: 80%;
     padding: 15px;
     text-align: center;
     display: none;
-  }
-  .letters.finished {
+}
+
+.letters.finished {
     pointer-events: none;
-  }
-  .letters .letter-box {
+}
+
+.letters .letter-box {
     width: 35px;
     height: 35px;
     display: inline-block;
@@ -411,13 +403,13 @@ h2 {
     font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
-   
-  }
-  .letters .letter-box.clicked {
+
+}
+.letters .letter-box.clicked {
     background-color: #222;
     opacity: .2;
     pointer-events: none;
-  }
+}
 
 
 /* Reload Button --> New Game */
@@ -431,7 +423,6 @@ h2 {
     color: white;
     border: 2px dotted #1e81b0;
     transition:  background-color .5s;
-    /* display: none; */
 }
 
 .btn_refresh:hover {
