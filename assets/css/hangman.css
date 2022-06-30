@@ -11,7 +11,7 @@
 /* Body and Wrapper */
 
 body {
-    background-color: rgb(223, 220, 220);
+    background-color: #ccc;
     width: 100%;
 }
 
@@ -28,18 +28,26 @@ body {
 header {
     font-size: 2rem;
     text-align: center;
-    color: #154c79;
     width: 90%;
     margin: 50px auto 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    
+
 }
 
 /* Title */
 h1 {
     text-transform: uppercase;
+    background-color: #565656;
+    color: transparent;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+         background-clip: text;
+    
 }
 
 
@@ -57,10 +65,9 @@ h1 {
     margin: 25px 0px 20px;
     padding: 10px;
     outline: none;
-    border: none; 
-    outline: none;
+    border: none;
     background-color: transparent;
-    border-radius: 15px;
+    border-radius: 25px;
     cursor: pointer;
 }
 
@@ -417,7 +424,7 @@ h2 {
     margin: 0 auto;
     padding: 13px 30px;
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 600;
     border-radius: 20px;   
     background-color: #1e81b0;
     color: white;
@@ -468,7 +475,7 @@ h2 {
 footer {
     height: 50px;
     width: 100%;
-    color: #154c79a2;
+    color: rgb(155, 154, 154);
     display: flex;
     align-items: center;
     justify-content: center;
